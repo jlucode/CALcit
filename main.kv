@@ -1,0 +1,294 @@
+#:import utils kivy.utils
+
+
+WindowManager:
+    HomeWindow:
+    LogWindow:
+        id: log
+        
+    HistoryWindow:
+        id: history
+        
+        
+        
+
+
+<HomeWindow>:
+    name: "home"
+
+    GridLayout:
+        cols: 3
+        size: root.width, root.height
+
+
+
+        MDFloatingActionButton:
+            icon: "history"
+            md_bg_color: app.theme_cls.primary_dark
+            elevation_normal: 12
+            user_font_size: "60sp"
+            on_release: 
+                app.root.current = "history"
+                root.manager.transition.direction = "right"
+                root.manager.ids.history.add_datatable()
+                
+                
+        
+        Image:
+            source: 'CALcit_Logo.png'
+            allow_stretch: False
+            keep_ratio: True
+            
+
+        MDFloatingActionButton:
+            icon: "pen"
+            md_bg_color: app.theme_cls.primary_dark
+            elevation_normal: 12
+            user_font_size: "60sp"
+            on_release: 
+                app.root.current = "log"
+                root.manager.transition.direction = "left"
+
+
+
+
+
+
+
+<LogWindow>:
+    name: "log"
+    
+    mealnumber:mealnumber
+    itemdescription:itemdescription
+    calories:calories
+    
+    allqueries:allqueries
+    
+    
+    
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            MDLabel: 
+                text: "Meal #"
+                halign: "center"
+                color: 0, 0, 0
+                
+            TextInput:
+                id: mealnumber
+                multiline: False
+                input_filter: 'int'
+            
+            MDLabel: 
+                text: "Item Description"
+                halign: "center"
+                color: 0, 0, 0
+
+            TextInput:
+                id: itemdescription
+                multiline: False
+               
+
+            MDLabel:  
+                text: "Calories"
+                halign: "center"
+                color: 0, 0, 0
+                
+            TextInput:
+                id: calories
+                multiline: False
+                input_filter: 'int'
+            
+            MDList:
+                multiline: True
+                id: allqueries
+                text: allqueries
+        
+            
+        GridLayout:
+            cols:1
+        
+            
+            RoundedButton:
+                text: "Submit"
+                size_hint: (1, .3)
+                font_size: "30sp"
+                font_color: app.theme_cls.primary_dark
+                mode: 'free-center'
+                on_press: 
+                    root.press()
+                    root.updatelabel_addition()
+                on_release: 
+                    root.save()
+                    
+                    
+                    
+                    
+
+
+
+        GridLayout:
+            cols:3
+
+            MDFloatingActionButton:
+                icon: "home"
+                md_bg_color: app.theme_cls.primary_dark
+                elevation_normal: 12
+                user_font_size: "60sp"
+                on_release: 
+                    app.root.current = "home"
+                    root.manager.transition.direction = "down"
+                   
+                    
+                    
+                    
+            
+            MDLabel:
+                text: 
+
+            MDFloatingActionButton:
+                icon: "history"
+                md_bg_color: app.theme_cls.primary_dark
+                elevation_normal: 12
+                user_font_size: "60sp"
+                on_release: 
+                    app.root.current = "history"
+                    root.manager.ids.history.add_datatable()
+                    
+                    
+                    
+                    
+
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [180]
+
+
+
+
+
+
+
+
+
+
+
+<HistoryWindow>:
+
+
+
+    name: "history"
+    rows: 6
+    cols: 1
+    padding: 10
+    spaceing: 10
+
+    GridLayout:
+        padding: 0, 0, 0, 0
+        cols: 1
+        size: root.width, root.height
+        
+
+
+        MDLabel:
+            id: sum_calories_label
+            text: str(root.manager.ids.log.sum_calories)
+            anchor_title: 'center'
+            md_bg_color: app.theme_cls.primary_dark
+            size_hint_y: None
+            halign: "center"
+            bold: True
+            font_size: "25sp"
+       
+        
+        
+
+    
+    
+    RecycleView:
+        AnchorLayout:
+            id: data_layout
+            adaptive_size: True
+         
+            
+
+    
+
+
+
+        
+
+
+
+    GridLayout:
+        cols: 3
+
+        MDFloatingActionButton:
+            icon: "home"
+            md_bg_color: app.theme_cls.primary_dark
+            elevation_normal: 12
+            user_font_size: "60sp"
+            on_release: 
+                app.root.current = "home"
+                root.manager.transition.direction = "down"
+        
+
+        MDLabel:  
+            text:
+
+
+        MDFloatingActionButton:
+            icon: "pen"
+            md_bg_color: app.theme_cls.primary_dark
+            elevation_normal: 12
+            user_font_size: "60sp"
+            on_release: 
+                app.root.current = "log" 
+                root.manager.transition.direction = "left"
+
+    
+    GridLayout:
+        cols: 3
+
+
+        MDLabel:  
+            text:
+
+        MDRoundFlatIconButton:
+            icon: "delete-forever"
+            text: "DELETE"
+            theme_text_color: "Custom"
+            text_color:app.theme_cls.primary_dark
+            md_bg_color: "black"
+            elevation_normal: 12
+            user_font_size: "300sp"
+            on_release: 
+                root.remove_selected_rows()
+                root.manager.ids.log.sum_calories
+                root.updatelabelsubtract()
+    
+
+        MDLabel:  
+            text:
+        
+
+ 
+
+    
+    
+
+    
