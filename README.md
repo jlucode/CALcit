@@ -22,7 +22,7 @@
 
 This application is a user-friendly, caloric consumption calculator. The user's data automatically resets daily. The daily reset allows users to have an app with minimal data storage requirements.
 
-iOS & Android compatable.
+iOS & Android compatible.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -54,6 +54,6 @@ The "Select-All" checkbox can be seen in the 3rd screenshot below (checkbox in t
 
 jlucode@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/jlucode/CALcit.git](https://github.com/jlucode/CALcit.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
