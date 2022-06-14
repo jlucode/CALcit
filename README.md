@@ -52,7 +52,7 @@ The "Select-All" checkbox can be seen in the 3rd screenshot below (checkbox in t
 <!-- CONTACT -->
 # Contact
 
-jlucode@gmail.com
+jlukosecode@gmail.com
 
 Project Link: [https://github.com/jlucode/CALcit.git](https://github.com/jlucode/CALcit.git)
 
